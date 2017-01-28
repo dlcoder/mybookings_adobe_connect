@@ -1,0 +1,3 @@
+= form.input :adobe_connect_participants
+= form.input :adobe_connect_meeting_room_id, collection: MybookingsAdobeConnect::MeetingRoom.all
+= form.input :booking_type, as: :hidden, input_html: { value: 'MybookingsAdobeConnect::Booking' }

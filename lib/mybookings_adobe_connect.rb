@@ -1,2 +1,4 @@
+require 'mybookings/resource_types_extensions/adobe_connect_extension'
+
 module MybookingsAdobeConnect
 end
