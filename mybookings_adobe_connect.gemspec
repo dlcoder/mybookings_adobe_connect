@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 4.2.7.1"
-  s.add_dependency "adobe_connect", "1.0.4"
+  s.add_dependency "adobe_connect", "1.0.5"
 end
