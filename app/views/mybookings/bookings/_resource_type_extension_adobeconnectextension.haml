@@ -1,3 +1,8 @@
-= form.input :adobe_connect_participants
-= form.input :adobe_connect_meeting_room_id, collection: MybookingsAdobeConnect::MeetingRoom.all
-= form.input :booking_type, as: :hidden, input_html: { value: 'MybookingsAdobeConnect::Booking' }
+.panel.panel-default
+  .panel-body
+    = form.input :adobe_connect_participants, input_html: { rows: 3 }, hint: t('.participants_hint')
+    = form.input :adobe_connect_meeting_room_id, collection: @meeting_rooms_names, hint: t('.meeting_room_hint')
+
+:coffeescript
+  $('#booking_adobe_connect_meeting_room_id').select2
+    tags: true

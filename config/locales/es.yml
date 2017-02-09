@@ -1,0 +1,21 @@
+es:
+  activerecord:
+    attributes:
+      mybookings/booking:
+        adobe_connect_meeting_room_id: Sala de Adobe Connect
+        adobe_connect_participants: Participantes
+    errors:
+      models:
+        mybookings_adobe_connect/booking:
+          attributes:
+            adobe_connect_meeting_room_id:
+              blank: No puede estar vacío.
+            until_date:
+              blank: No puede estar vacío.
+  errors:
+    invalid_email_list: La lista de direcciones de correo electrónico no es válida. Asegúrate de que has introducido una lista de direcciones de correo correctas, separadas por comas.
+  mybookings:
+    bookings:
+      resource_type_extension_adobeconnectextension:
+        participants_hint: Lista de las direcciones de correo electrónico de los participantes, separadas por comas.
+        meeting_room_hint: Elige la sala a la que se asociará la reserva, o escribe un nombre parar crear una nueva.

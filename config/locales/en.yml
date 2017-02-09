@@ -1,0 +1,21 @@
+en:
+  activerecord:
+    attributes:
+      mybookings/booking:
+        adobe_connect_meeting_room_id: Adobe Connect meeting room
+        adobe_connect_participants: Participants
+    errors:
+      models:
+        mybookings_adobe_connect/booking:
+          attributes:
+            adobe_connect_meeting_room_id:
+              blank: Can't be blank.
+            until_date:
+              blank: Can't be blank.
+  errors:
+    invalid_email_list: The list of emails is not valid. Ensure you have introduced a list of valid email addresses separated by commas.
+  mybookings:
+    bookings:
+      resource_type_extension_adobeconnectextension:
+        participants_hint: The list of participants email addresses invited to the meeting, separated by commas.
+        meeting_room_hint: Select the meeting room for the booking, or write a different name to create a new one.
