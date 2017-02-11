@@ -7,5 +7,9 @@ module MybookingsAdobeConnect
     def self.for_user user
       where(user: user)
     end
+
+    def url
+      MeetingRoomService.new({ meeting_room: self }).url
+    end
   end
 end

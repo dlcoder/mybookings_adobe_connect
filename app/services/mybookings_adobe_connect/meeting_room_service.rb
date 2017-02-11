@@ -44,6 +44,10 @@ module MybookingsAdobeConnect
       end
     end
 
+    def url
+      "#{ApiInstanceService::get_connection.domain}#{get_adobe_connect_meeting_by_uuid.url_path}"
+    end
+
     private
 
     def create_meeting_room
