@@ -1,7 +1,7 @@
-module MybookingsAdobeConnect
-  class Booking < Mybookings::Booking
-    has_many :events, class_name: 'MybookingsAdobeConnect::Event'
-    belongs_to :adobe_connect_meeting_room, class_name: 'MybookingsAdobeConnect::MeetingRoom', foreign_key: :adobe_connect_meeting_room_id
+module Mybookings
+  class AdobeConnectBooking < Booking
+    has_many :events, class_name: 'Event', foreign_key: :booking_id
+    belongs_to :adobe_connect_meeting_room, class_name: 'AdobeConnectMeetingRoom', foreign_key: :adobe_connect_meeting_room_id
 
     validates :adobe_connect_meeting_room_id, presence: true
     validate :adobe_connect_participants_email_list
@@ -15,9 +15,13 @@ module MybookingsAdobeConnect
     end
 
     def prepare!
-      UserService.new({ user: user }).prepare!
-      MeetingRoomService.new({ meeting_room: adobe_connect_meeting_room }).prepare!
+      AdobeConnectUserService.new({ user: user }).prepare!
+      AdobeConnectMeetingRoomService.new({ meeting_room: adobe_connect_meeting_room }).prepare!
       super
+    end
+
+    def to_partial_path
+      'bookings/booking'
     end
 
     private

@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-body
+    = form.input :adobe_connect_meeting_room_id, collection: @meeting_rooms_names, hint: t('mybookings.bookings.hints.meeting_room_hint'), include_blank: false
+    = form.input :adobe_connect_participants, input_html: { rows: 3 }, hint: t('mybookings.bookings.hints.participants_hint')
+
+:coffeescript
+  $('#adobe_connect_booking_adobe_connect_meeting_room_id').select2
+    tags: true

@@ -1,5 +1,5 @@
-module MybookingsAdobeConnect
-  class ApiInstanceService
+module Mybookings
+  class AdobeConnectApiInstanceService
     AdobeConnect::Config.declare do
       username Rails.application.secrets.adobeconnect_username
       password Rails.application.secrets.adobeconnect_password

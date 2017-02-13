@@ -1,5 +1,5 @@
-module MybookingsAdobeConnect
-  class UserService
+module Mybookings
+  class AdobeConnectUserService
     def initialize params
       @user = params[:user]
     end
@@ -9,7 +9,7 @@ module MybookingsAdobeConnect
     end
 
     def create_user_if_not_exists email
-      adobe_connect_user = AdobeConnect::User.find({ email: email }, ApiInstanceService::get_connection)
+      adobe_connect_user = AdobeConnect::User.find({ email: email }, AdobeConnectApiInstanceService::get_connection)
       return adobe_connect_user unless adobe_connect_user.nil?
 
       adobe_connect_user_attrs = {
@@ -21,7 +21,7 @@ module MybookingsAdobeConnect
         'send_email' => false
       }
 
-      adobe_connect_user = AdobeConnect::User.new(adobe_connect_user_attrs, ApiInstanceService::get_connection)
+      adobe_connect_user = AdobeConnect::User.new(adobe_connect_user_attrs, AdobeConnectApiInstanceService::get_connection)
       adobe_connect_user.save
 
       adobe_connect_user

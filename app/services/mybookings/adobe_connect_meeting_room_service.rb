@@ -1,5 +1,5 @@
-module MybookingsAdobeConnect
-  class MeetingRoomService
+module Mybookings
+  class AdobeConnectMeetingRoomService
     def initialize params
       @booking = params[:booking]
       @meeting_room = params[:meeting_room]
@@ -30,7 +30,7 @@ module MybookingsAdobeConnect
       adobe_connect_meeting = get_adobe_connect_meeting_by_uuid
 
       @booking.adobe_connect_participants.split(',').each do |email|
-        adobe_connect_user = UserService.new({ user: @meeting_room.user }).create_user_if_not_exists(email)
+        adobe_connect_user = AdobeConnectUserService.new({ user: @meeting_room.user }).create_user_if_not_exists(email)
         adobe_connect_meeting.add_participant(adobe_connect_user.id)
       end
     end
@@ -45,15 +45,15 @@ module MybookingsAdobeConnect
     end
 
     def url
-      "#{ApiInstanceService::get_connection.domain}#{get_adobe_connect_meeting_by_uuid.url_path}"
+      "#{AdobeConnectApiInstanceService::get_connection.domain}#{get_adobe_connect_meeting_by_uuid.url_path}"
     end
 
     private
 
     def create_meeting_room
-      adobe_connect_folder_id = AdobeConnect::MeetingFolder.my_meetings_folder_id(ApiInstanceService::get_connection)
+      adobe_connect_folder_id = AdobeConnect::MeetingFolder.my_meetings_folder_id(AdobeConnectApiInstanceService::get_connection)
 
-      adobe_connect_meeting = AdobeConnect::Meeting.new({ name: @meeting_room.name, folder_id: adobe_connect_folder_id }, ApiInstanceService::get_connection)
+      adobe_connect_meeting = AdobeConnect::Meeting.new({ name: @meeting_room.name, folder_id: adobe_connect_folder_id }, AdobeConnectApiInstanceService::get_connection)
       adobe_connect_meeting.save
       adobe_connect_meeting.private!
 
@@ -61,11 +61,11 @@ module MybookingsAdobeConnect
     end
 
     def get_adobe_connect_meeting_by_uuid uuid=@meeting_room.uuid
-      AdobeConnect::Meeting.find_by_id(uuid, ApiInstanceService::get_connection)
+      AdobeConnect::Meeting.find_by_id(uuid, AdobeConnectApiInstanceService::get_connection)
     end
 
     def get_adobe_connect_user_by_email email=@meeting_room.user_email
-      AdobeConnect::User.find({ email: email }, ApiInstanceService::get_connection)
+      AdobeConnect::User.find({ email: email }, AdobeConnectApiInstanceService::get_connection)
     end
   end
 end
