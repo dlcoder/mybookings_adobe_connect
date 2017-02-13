@@ -1,9 +1,13 @@
 module Mybookings
   class AdobeConnectBookingsController < BookingsController
-    before_action :load_meeting_room_names, only: [:new, :create]
-    before_action :preprocess_params, only: [:create]
+    before_action :load_meeting_room_names, only: [:new, :edit, :create, :update]
+    before_action :preprocess_params, only: [:create, :update]
 
     def new
+      super
+    end
+
+    def edit
       super
     end
 
@@ -11,7 +15,19 @@ module Mybookings
       super
     end
 
+    def update
+      super
+    end
+
+    def destroy
+      super
+    end
+
     private
+
+    def booking_params_for_update
+      super.merge(params.require(booking_type.model_name.param_key).permit(:adobe_connect_meeting_room_id, :adobe_connect_participants))
+    end
 
     def booking_type
       AdobeConnectBooking
