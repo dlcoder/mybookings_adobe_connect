@@ -28,6 +28,10 @@ module Mybookings
       'bookings/booking'
     end
 
+    def editable?
+      true
+    end
+
     private
 
     def adobe_connect_participants_email_list
