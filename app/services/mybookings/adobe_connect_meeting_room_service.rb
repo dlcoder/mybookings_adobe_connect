@@ -29,7 +29,7 @@ module Mybookings
     def add_participants!
       adobe_connect_meeting = get_adobe_connect_meeting_by_uuid
 
-      @booking.adobe_connect_participants.split(',').each do |email|
+      @booking.adobe_connect_participants.each do |email|
         adobe_connect_user = AdobeConnectUserService.new({ user: @meeting_room.user }).create_user_if_not_exists(email)
         adobe_connect_meeting.add_participant(adobe_connect_user.id)
       end
@@ -38,7 +38,7 @@ module Mybookings
     def remove_participants!
       adobe_connect_meeting = get_adobe_connect_meeting_by_uuid
 
-      @booking.adobe_connect_participants.split(',').each do |email|
+      @booking.adobe_connect_participants.each do |email|
         adobe_connect_user = get_adobe_connect_user_by_email(email)
         adobe_connect_meeting.remove_user(adobe_connect_user.id)
       end

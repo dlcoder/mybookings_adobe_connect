@@ -6,6 +6,10 @@ module Mybookings
     validates :adobe_connect_meeting_room_id, presence: true
     validate :adobe_connect_participants_email_list
 
+    delegate :name, to: :adobe_connect_meeting_room, prefix: true
+
+    serialize :adobe_connect_participants, Array
+
     def confirm!
       super
     end
@@ -29,7 +33,7 @@ module Mybookings
     def adobe_connect_participants_email_list
       return unless adobe_connect_participants.present?
 
-      adobe_connect_participants.split(',').each do |email|
+      adobe_connect_participants.each do |email|
         # If the email is right
         next if /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i.match(email)
 
