@@ -1,6 +1,6 @@
 module Mybookings
   class AdobeConnectBookingsController < BookingsController
-    before_action :load_meeting_room_names, only: [:new, :edit, :create, :update]
+    before_action :load_meeting_room_names, only: [:new, :show, :create, :update]
     before_action :preprocess_adobe_connect_meeting_room_id, only: [:create, :update]
     before_action :preprocess_adobe_connect_participants, only: [:create, :update]
 
@@ -8,7 +8,7 @@ module Mybookings
       super
     end
 
-    def edit
+    def show
       super
     end
 
@@ -32,6 +32,10 @@ module Mybookings
 
     def booking_type
       AdobeConnectBooking
+    end
+
+    def booking_decorator_type
+      AdobeConnectBookingDecorator
     end
 
     def load_meeting_room_names
