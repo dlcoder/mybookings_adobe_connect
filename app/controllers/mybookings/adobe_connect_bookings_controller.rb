@@ -34,6 +34,10 @@ module Mybookings
       AdobeConnectBooking
     end
 
+    def event_type
+      AdobeConnectEvent
+    end
+
     def booking_decorator_type
       AdobeConnectBookingDecorator
     end
