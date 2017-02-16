@@ -36,13 +36,13 @@ module Mybookings
 
     def send_event_started_notification_to_host
       params = { name: booking.adobe_connect_meeting_room.name, url: booking.adobe_connect_meeting_room.url }
-      AdobeConnectNotificationsMailer.event_started(params, self.booking.user_email).deliver_now!
+      AdobeConnectNotificationsMailer.adobe_connect_event_started(params, self.booking.user_email).deliver_now!
     end
 
     def send_event_started_notification_to_participants
       params = { name: booking.adobe_connect_meeting_room.name, url: booking.adobe_connect_meeting_room.url }
       self.booking_adobe_connect_participants.each do |email|
-        AdobeConnectNotificationsMailer.event_started(params, email).deliver_now!
+        AdobeConnectNotificationsMailer.adobe_connect_event_started(params, email).deliver_now!
       end
     end
   end
