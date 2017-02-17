@@ -66,7 +66,7 @@ module Mybookings
 
     def preprocess_adobe_connect_participants
       emails_list = params[booking_type.model_name.param_key][:adobe_connect_participants]
-      emails_list = emails_list.gsub(/\s+/, '').split(',')
+      emails_list = emails_list.split(',').map { |e| e.gsub(/\s+/, '') }
       params[booking_type.model_name.param_key][:adobe_connect_participants] = emails_list
     end
   end
