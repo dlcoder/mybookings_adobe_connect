@@ -7,7 +7,7 @@ module Mybookings
 
     def prepare!
       return if @meeting_room.uuid
-      create_meeting_room
+      find_or_create_meeting_room
     end
 
     def add_host!
@@ -50,12 +50,16 @@ module Mybookings
 
     private
 
-    def create_meeting_room
+    def find_or_create_meeting_room
       adobe_connect_folder_id = AdobeConnect::MeetingFolder.my_meetings_folder_id(AdobeConnectApiInstanceService::get_connection)
 
-      adobe_connect_meeting = AdobeConnect::Meeting.new({ name: @meeting_room.name, folder_id: adobe_connect_folder_id }, AdobeConnectApiInstanceService::get_connection)
-      adobe_connect_meeting.save
-      adobe_connect_meeting.private!
+      adobe_connect_meeting = AdobeConnect::Meeting.find_within_folder(adobe_connect_folder_id, { filter_name: @meeting_room.name }).first
+
+      unless adobe_connect_meeting
+        adobe_connect_meeting = AdobeConnect::Meeting.new({ name: @meeting_room.name, folder_id: adobe_connect_folder_id }, AdobeConnectApiInstanceService::get_connection)
+        adobe_connect_meeting.save
+        adobe_connect_meeting.private!
+      end
 
       @meeting_room.update_attribute(:uuid, adobe_connect_meeting.id)
     end
