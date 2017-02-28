@@ -1,27 +1,26 @@
 module Mybookings
   class PrepareAdobeConnectMeetingService
-    def initialize meeting_room
-      @meeting_room = meeting_room
+    def initialize booking
+      @booking = booking
     end
 
     def execute
       meeting = find_meeting_or_create
-      @meeting_room.update_attribute(:uuid, meeting.id)
+      @booking.set_adobe_connect_meeting_room_uuid(meeting.id)
     end
 
     private
 
     def find_meeting_or_create
-      # TODO: find folder id for user
-      folder_id = AdobeConnect::MeetingFolder.my_meetings_folder_id
+      folder_id = folder_id_for_user(@booking.user_email)
 
       meeting = AdobeConnect::Meeting.find_within_folder(folder_id, {
-        filter_name: @meeting_room.name
+        filter_name: @booking.adobe_connect_meeting_room_name
       }).first
 
       unless meeting
         meeting = AdobeConnect::Meeting.new({
-          name: @meeting_room.name,
+          name: @booking.adobe_connect_meeting_room_name,
           folder_id: folder_id
         })
 
@@ -30,6 +29,10 @@ module Mybookings
       end
 
       meeting
+    end
+
+    def folder_id_for_user email
+      AdobeConnect::MeetingFolder.my_meetings_folder_id_by_user_email(email)
     end
   end
 end

@@ -20,14 +20,18 @@ module Mybookings
     end
 
     def prepare!
-      PrepareAdobeConnectMeetingService.new(adobe_connect_meeting_room).execute
       PrepareAdobeConnectUsersService.new(self).execute
+      PrepareAdobeConnectMeetingService.new(self).execute
 
       super
     end
 
     def to_partial_path
       'bookings/booking'
+    end
+
+    def set_adobe_connect_meeting_room_uuid uuid
+      adobe_connect_meeting_room.update_attribute(:uuid, uuid)
     end
 
     private
