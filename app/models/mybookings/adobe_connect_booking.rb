@@ -7,6 +7,7 @@ module Mybookings
     validate :adobe_connect_participants_email_list
 
     delegate :name, to: :adobe_connect_meeting_room, prefix: true
+    delegate :uuid, to: :adobe_connect_meeting_room, prefix: true
 
     serialize :adobe_connect_participants, Array
 
@@ -19,8 +20,9 @@ module Mybookings
     end
 
     def prepare!
-      AdobeConnectUserService.new({ user: user }).prepare!
-      AdobeConnectMeetingRoomService.new({ meeting_room: adobe_connect_meeting_room }).prepare!
+      PrepareAdobeConnectMeetingService.new(adobe_connect_meeting_room).execute
+      PrepareAdobeConnectUsersService.new(self).execute
+
       super
     end
 
