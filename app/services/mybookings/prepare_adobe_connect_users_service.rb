@@ -5,7 +5,8 @@ module Mybookings
     end
 
     def execute
-      find_user_or_create(@booking.user_email)
+      user = find_user_or_create(@booking.user_email)
+      assign_user_to_hosts_group(user)
 
       @booking.adobe_connect_participants.map do |email|
         find_user_or_create(email)
@@ -33,6 +34,11 @@ module Mybookings
         'uuid' => SecureRandom.uuid,
         'send_email' => false
       }
+    end
+
+    def assign_user_to_hosts_group user
+      live_admins_group = AdobeConnect::Group.find_by_type('live-admins')
+      live_admins_group.add_member(user)
     end
   end
 end
