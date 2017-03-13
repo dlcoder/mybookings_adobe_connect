@@ -27,7 +27,7 @@ module Mybookings
     private
 
     def booking_params_for_update
-      super.merge(params.require(booking_type.model_name.param_key).permit(:adobe_connect_meeting_room_id, :adobe_connect_participants => []))
+      super.merge(params.require(booking_type.model_name.param_key).permit(:adobe_connect_meeting_room_id, :adobe_connect_meeting_privacy, :adobe_connect_participants => []))
     end
 
     def booking_type

@@ -7,6 +7,7 @@ module Mybookings
     def execute
       remove_meeting_participants
       remove_meeting_host
+      set_meeting_as_private
     end
 
     private
@@ -25,6 +26,11 @@ module Mybookings
       user = adobe_connect_user(@event.booking_user_email)
 
       meeting.remove_user(user.id)
+    end
+
+    def set_meeting_as_private
+      meeting = adobe_connect_meeting
+      meeting.private!
     end
 
     def adobe_connect_meeting

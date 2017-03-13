@@ -5,6 +5,7 @@ module Mybookings
     end
 
     def execute
+      set_meeting_privacy
       set_meeting_host
       set_meeting_participants
 
@@ -12,6 +13,25 @@ module Mybookings
     end
 
     private
+
+    def set_meeting_privacy
+      self.send("set_meeting_privacy_as_#{@event.booking_adobe_connect_meeting_privacy}")
+    end
+
+    def set_meeting_privacy_as_closed
+      meeting = adobe_connect_meeting
+      meeting.private!
+    end
+
+    def set_meeting_privacy_as_semiopened
+      meeting = adobe_connect_meeting
+      meeting.protected!
+    end
+
+    def set_meeting_privacy_as_opened
+      meeting = adobe_connect_meeting
+      meeting.public!
+    end
 
     def set_meeting_host
       meeting = adobe_connect_meeting

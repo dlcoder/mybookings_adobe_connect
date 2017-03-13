@@ -3,6 +3,7 @@ es:
     attributes:
       mybookings/booking:
         adobe_connect_meeting_room_id: Sala de Adobe Connect
+        adobe_connect_meeting_privacy: Privacidad de la sala
         adobe_connect_participants: Participantes
     errors:
       models:
@@ -19,6 +20,10 @@ es:
       hints:
         participants_hint: Lista de las direcciones de correo electrónico de los participantes, separadas por comas.
         meeting_room_hint: Elige la sala a la que se asociará la reserva, o escribe un nombre parar crear una nueva.
+      privacies:
+        closed_html: <strong>Participantes</strong> - Solamente podrán acceder los usuarios que indiques en el campo participantes.
+        semiopened_html: <strong>Participantes e invitados admitidos</strong> - Además de los usuarios que indiques en el campo participantes, podrá acceder cualquier usuario con el que compartas la URL de la sala, siempre y cuando aceptes el acceso durante la sesión a través de una alerta que aparecerá en Adobe Connect cuando un usuario que no es participante intente conectarse.
+        opened_html: <strong>Acceso público</strong> - Podrán acceder todos los usuarios con los que compartas la URL de la sala, sin aceptación expresa.
     adobe_connect_notifications_mailer:
       adobe_connect_event_started:
         description: 'Fuiste invitado a unirte a la sesión "%{meeting_room_name}". Puedes hacer click en siguiente enlace para unirte a la sesión:'

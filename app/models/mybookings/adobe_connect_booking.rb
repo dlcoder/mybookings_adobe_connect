@@ -3,8 +3,10 @@ module Mybookings
     has_many :events, class_name: 'Event', foreign_key: :booking_id
     belongs_to :adobe_connect_meeting_room, class_name: 'AdobeConnectMeetingRoom', foreign_key: :adobe_connect_meeting_room_id
 
-    validates :adobe_connect_meeting_room_id, presence: true
+    validates :adobe_connect_meeting_room_id, :adobe_connect_meeting_privacy, presence: true
     validate :adobe_connect_participants_email_list
+
+    enum adobe_connect_meeting_privacy: [:closed, :semiopened, :opened]
 
     delegate :name, to: :adobe_connect_meeting_room, prefix: true
     delegate :uuid, to: :adobe_connect_meeting_room, prefix: true
