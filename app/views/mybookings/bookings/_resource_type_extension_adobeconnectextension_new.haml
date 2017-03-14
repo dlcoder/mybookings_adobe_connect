@@ -2,7 +2,7 @@
   .panel-body
     - selected_value = @booking.adobe_connect_meeting_room_name if @booking.adobe_connect_meeting_room
     = form.input :adobe_connect_meeting_room_id, collection: @meeting_rooms_names, selected: selected_value, hint: t('mybookings.bookings.hints.meeting_room_hint'), include_blank: false
-    = form.input :adobe_connect_meeting_privacy, as: :radio_buttons, include_blank: false, checked: 0, collection: Mybookings::AdobeConnectBooking.adobe_connect_meeting_privacies.keys.map {|key| [t("mybookings.bookings.privacies.#{key}_html"), key]}
+    = form.input :adobe_connect_meeting_privacy, as: :radio_buttons, include_blank: false, checked: 'closed', collection: Mybookings::AdobeConnectBooking.adobe_connect_meeting_privacies.keys.map {|key| [t("mybookings.bookings.privacies.#{key}_html"), key]}
     = form.input :adobe_connect_participants, input_html: { rows: 3, value: @booking.adobe_connect_participants.join(', ') }, hint: t('mybookings.bookings.hints.participants_hint')
 
 :coffeescript
