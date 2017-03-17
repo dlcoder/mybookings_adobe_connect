@@ -1,3 +1,3 @@
 = content_for :email_body do
-  %p= t('.description', meeting_room_name: @name)
-  %p= link_to @url, @url
+  %p= t('.description', name: @params[:name])
+  %p= link_to @params[:url], @params[:url]

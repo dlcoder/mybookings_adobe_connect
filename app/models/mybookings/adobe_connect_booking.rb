@@ -24,6 +24,7 @@ module Mybookings
     def prepare!
       PrepareAdobeConnectUsersService.new(self).execute
       PrepareAdobeConnectMeetingService.new(self).execute
+      SendInvitationsService.new(self).execute
 
       super
     end

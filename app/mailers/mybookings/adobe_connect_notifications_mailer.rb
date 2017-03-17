@@ -1,13 +1,21 @@
 module Mybookings
   class AdobeConnectNotificationsMailer < ApplicationMailer
+    def adobe_connect_invited_to_booking params, email
+      @params = params
+      subject = "[#{app_name}] #{t('mybookings.adobe_connect_notifications_mailer.adobe_connect_invited_to_booking.subject', name: params[:name])}"
+      mail(to: email, subject: subject)
+    end
+
     def adobe_connect_event_started params, email
-      @name = params[:name]
-      @url = params[:url]
+      @params = params
+      subject = "[#{app_name}] #{t('mybookings.adobe_connect_notifications_mailer.adobe_connect_event_started.subject', name: params[:name])}"
+      mail(to: email, subject: subject)
+    end
 
-      app_name = t('mybookings.app_name')
-      notification_subject = t('mybookings.adobe_connect_notifications_mailer.adobe_connect_event_started.subject', meeting_room_name: params[:name])
+    private
 
-      mail(to: email, subject: "[#{app_name}] #{notification_subject}")
+    def app_name
+      t('mybookings.app_name')
     end
   end
 end
