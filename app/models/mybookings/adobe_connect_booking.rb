@@ -4,7 +4,7 @@ module Mybookings
     belongs_to :adobe_connect_meeting_room, class_name: 'AdobeConnectMeetingRoom', foreign_key: :adobe_connect_meeting_room_id
 
     validates :adobe_connect_meeting_room_id, :adobe_connect_meeting_privacy, presence: true
-    validate :adobe_connect_participants_email_list
+    validates :adobe_connect_participants, email_list: true
 
     enum adobe_connect_meeting_privacy: [:closed, :semiopened, :opened]
 
@@ -34,21 +34,6 @@ module Mybookings
 
     def set_adobe_connect_meeting_room_uuid uuid
       adobe_connect_meeting_room.update_attribute(:uuid, uuid)
-    end
-
-    private
-
-    def adobe_connect_participants_email_list
-      return unless adobe_connect_participants.present?
-
-      adobe_connect_participants.each do |email|
-        # If the email is right
-        next if /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i.match(email)
-
-        # If one email is not valid
-        errors.add(:adobe_connect_participants, I18n.t('errors.invalid_email_list'))
-        return
-      end
     end
   end
 end
