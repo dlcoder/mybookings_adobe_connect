@@ -6,9 +6,13 @@ module Mybookings
 
     def execute
       user = find_user_or_create(@booking.user_email)
+      hosts_group = AdobeConnect::Group.find_by_name('mybookings-hosts')
+      hosts_group.add_member(user) if hosts_group
 
+      participants_group = AdobeConnect::Group.find_by_name('mybookings-participants')
       @booking.adobe_connect_participants.map do |email|
-        find_user_or_create(email)
+        user = find_user_or_create(email)
+        participants_group.add_member(user) if participants_group
       end
     end
 
