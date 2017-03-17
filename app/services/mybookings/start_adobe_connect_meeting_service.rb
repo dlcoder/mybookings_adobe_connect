@@ -38,6 +38,9 @@ module Mybookings
       user = adobe_connect_user(@event.booking_user_email)
 
       meeting.add_host(user.id)
+
+      live_admins_group = AdobeConnect::Group.find_by_type('live-admins')
+      live_admins_group.add_member(user)
     end
 
     def set_meeting_participants

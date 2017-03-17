@@ -26,6 +26,9 @@ module Mybookings
       user = adobe_connect_user(@event.booking_user_email)
 
       meeting.remove_user(user.id)
+
+      live_admins_group = AdobeConnect::Group.find_by_type('live-admins')
+      live_admins_group.remove_member(user)
     end
 
     def set_meeting_as_private
