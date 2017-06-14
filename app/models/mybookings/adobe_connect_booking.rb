@@ -8,8 +8,7 @@ module Mybookings
 
     enum adobe_connect_meeting_privacy: [:closed, :semiopened, :opened]
 
-    delegate :name, to: :adobe_connect_meeting_room, prefix: true
-    delegate :uuid, to: :adobe_connect_meeting_room, prefix: true
+    delegate :name, :uuid, to: :adobe_connect_meeting_room, prefix: true
 
     serialize :adobe_connect_participants, Array
 

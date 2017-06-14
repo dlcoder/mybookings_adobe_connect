@@ -21,7 +21,8 @@ module Mybookings
         params = {
           user_email: @booking.user_email,
           name: @booking.adobe_connect_meeting_room_name,
-          events: params_events
+          events: params_events,
+          from: @booking.resource_type_notifications_email_from
         }
 
         AdobeConnectNotificationsMailer.adobe_connect_invited_to_booking(params, email).deliver_now!

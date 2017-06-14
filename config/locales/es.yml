@@ -27,10 +27,13 @@ es:
     adobe_connect_notifications_mailer:
       adobe_connect_event_started:
         description: 'Fuiste invitado a unirte a la sesión "%{name}". Puedes hacer click en siguiente enlace para unirte a la sesión:'
-        subject: La sesión de Adobe Connect "%{name}" va a comenzar pronto.
+        subject: La sesión de Adobe Connect "%{name}" va a comenzar en breve.
       adobe_connect_invited_to_booking:
         description: 'Has sido invitado a la sesión de Adobe Connect "%{name}" por el usuario %{user_email}. Unos minutos antes del comienzo de la sesión recibirás un correo electrónico con un enlace para acceder a la reunión.'
         subject: Has sido invitado a la sesión de Adobe Connect "%{name}".
         label_events: 'Eventos'
         label_start_date: 'Fecha de inicio'
         label_end_date: 'Fecha de fin'
+      adobe_connect_meeting_prepared:
+        description: 'La sala de Adobe Connect para la sesión "%{name}" está operativa en el siguiente enlace:'
+        subject: Se ha preparado la sala de Adobe Connect "%{name}".

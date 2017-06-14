@@ -63,7 +63,8 @@ module Mybookings
     def notify_event_started
       params = {
         name: @event.booking_adobe_connect_meeting_room_name,
-        url: get_meeting_url(adobe_connect_meeting)
+        url: get_meeting_url(adobe_connect_meeting),
+        from: @event.booking_resource_type_notifications_email_from
       }
 
       emails = [@event.booking_user_email] + @event.booking_adobe_connect_participants
