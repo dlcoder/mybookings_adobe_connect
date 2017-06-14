@@ -24,6 +24,8 @@ en:
         closed_html: Participants
         semiopened_html: Participants and accepted guests
         opened_html: Public access
+      resource_type_extension_adobeconnectextension_edit:
+        open_meeting: 'Go to Adobe Connect meeting room «%{meeting_room_name}»'
     adobe_connect_notifications_mailer:
       adobe_connect_event_started:
         description: 'You were invited to join the session "%{name}". Click the next link to join the session:'

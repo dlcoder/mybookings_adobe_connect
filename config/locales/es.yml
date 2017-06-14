@@ -24,6 +24,8 @@ es:
         closed_html: <strong>Participantes</strong> - Solamente podrán acceder los usuarios que indiques en el campo participantes.
         semiopened_html: <strong>Participantes e invitados admitidos</strong> - Además de los usuarios que indiques en el campo participantes, podrá acceder cualquier usuario con el que compartas la URL de la sala, siempre y cuando aceptes el acceso durante la sesión a través de una alerta que aparecerá en Adobe Connect cuando un usuario que no es participante intente conectarse.
         opened_html: <strong>Acceso público</strong> - Podrán acceder todos los usuarios con los que compartas la URL de la sala, sin aceptación expresa.
+      resource_type_extension_adobeconnectextension_edit:
+        open_meeting: 'Acceder a la sala de Adobe Connect «%{meeting_room_name}»'
     adobe_connect_notifications_mailer:
       adobe_connect_event_started:
         description: 'Fuiste invitado a unirte a la sesión "%{name}". Puedes hacer click en siguiente enlace para unirte a la sesión:'
