@@ -6,7 +6,7 @@ module Mybookings
     validates :adobe_connect_meeting_room_id, :adobe_connect_meeting_privacy, presence: true
     validates :adobe_connect_participants, email_list: true
 
-    enum adobe_connect_meeting_privacy: [:closed, :semiopened, :opened]
+    enum adobe_connect_meeting_privacy: [:opened, :semiopened, :closed]
 
     delegate :name, :uuid, :url, to: :adobe_connect_meeting_room, prefix: true
 
