@@ -1,0 +1,9 @@
+= content_for :email_body do
+
+  = t('.introduction_html', resource_type_name: @booking.resource_type_name)
+
+  %ul= render partial: 'mybookings/confirmations_mailer/event', collection: @booking.events
+
+  = t('.extra_html', url: @booking.adobe_connect_meeting_room_url)
+
+  = t('mybookings.mailers.footer_html')

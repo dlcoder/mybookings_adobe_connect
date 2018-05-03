@@ -26,16 +26,28 @@ es:
         opened_html: <strong>Acceso público</strong> - Podrán acceder todos los usuarios con los que compartas la URL de la sala, sin aceptación expresa.
       resource_type_extension_adobeconnectextension_edit:
         open_meeting: 'Acceder a la sala de Adobe Connect «%{meeting_room_name}»'
-    adobe_connect_notifications_mailer:
-      adobe_connect_event_started:
-        description: 'Fuiste invitado a unirte a la sesión "%{name}". Puedes hacer click en siguiente enlace para unirte a la sesión:'
-        subject: La sesión de Adobe Connect "%{name}" va a comenzar en breve.
-      adobe_connect_invited_to_booking:
-        description: 'Has sido invitado a la sesión de Adobe Connect "%{name}" por el usuario %{user_email}. Unos minutos antes del comienzo de la sesión recibirás un correo electrónico con un enlace para acceder a la reunión.'
-        subject: Has sido invitado a la sesión de Adobe Connect "%{name}".
-        label_events: 'Eventos'
-        label_start_date: 'Fecha de inicio'
-        label_end_date: 'Fecha de fin'
-      adobe_connect_meeting_prepared:
-        description: 'La sala de Adobe Connect para la sesión "%{name}" está operativa en el siguiente enlace:'
-        subject: Se ha preparado la sala de Adobe Connect "%{name}".
+    adobe_connect_invitations_mailer:
+      to_participant:
+        subject: Invitación a reunión o evento %{resource_type_name}
+        introduction_html: '<p>Ha sido invitado para participar en <strong>%{resource_type_name}</strong> con los siguientes eventos:</p>'
+        extra_html: |
+          <p>Este es el enlace para participar: <a href="%{url}">%{url}</a></p>
+          <p>El enlace se habilitará cuando tenga lugar la reunión o evento.</p>
+    adobe_connect_reminders_mailer:
+      to_participant:
+        subject: Recordatorio de invitación a reunión o evento %{resource_type_name}
+        introduction_html: '<p>Le recordamos que ha sido invitado para participar en la reunión o evento que dará comienzo en <strong>%{minutes} minutos</strong>.</p>'
+        extra_html: |
+          <p>Este es el enlace para participar: <a href="%{url}">%{url}</a></p>
+    confirmations_mailer:
+      new_booking_to_user_adobeconnectextension_extra:
+        extra_html: |
+          <p>Este es el enlace a su %{resource_type_name}: <a href="%{url}">%{url}</a></p>
+          <p>Su %{resource_type_name} estará habilitada %{minutes} minutos antes del comienzo de la reunión o evento.</p>
+      new_booking_to_resource_type_managers_adobeconnectextension_extra:
+        extra_html: |
+          <p>Este es el enlace de la sala: <a href="%{url}">%{url}</a></p>
+    reminders_mailer:
+      upcoming_event_to_user_adobeconnectextension_extra:
+        extra_html: |
+          <p>Este es el enlace a su %{resource_type_name}: <a href="%{url}">%{url}</a></p>
