@@ -39,6 +39,7 @@ es:
         introduction_html: '<p>Le recordamos que ha sido invitado para participar en la reunión o evento que dará comienzo en <strong>%{minutes} minutos</strong>.</p>'
         extra_html: |
           <p>Este es el enlace para participar: <a href="%{url}">%{url}</a></p>
+          <p>A partir de este momento puede acceder a ella y comprobar el funcionamiento de su cámara y micrófono.</p>.
     confirmations_mailer:
       new_booking_to_user_adobeconnectextension_extra:
         extra_html: |
@@ -51,3 +52,4 @@ es:
       upcoming_event_to_user_adobeconnectextension_extra:
         extra_html: |
           <p>Este es el enlace a su %{resource_type_name}: <a href="%{url}">%{url}</a></p>
+          <p>A partir de este momento puede acceder a ella para recibir a sus invitados y comprobar el funcionamiento de sus cámaras y micrófonos.</p>.

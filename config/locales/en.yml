@@ -39,6 +39,7 @@ en:
         introduction_html: '<p>Remember you are invited to join to the meeting that is going to start in <strong>%{minutes} minutes</strong>.</p>'
         extra_html: |
           <p>This is the link to join: <a href="%{url}">%{url}</a></p>
+          <p>From this moment you can enter to the URL and check your camera and microphone.</p>
     confirmations_mailer:
       new_booking_to_user_adobeconnectextension_extra:
         extra_html: |
@@ -51,3 +52,4 @@ en:
       upcoming_event_to_user_adobeconnectextension_extra:
         extra_html: |
           <p>This is the link to your %{resource_type_name}: <a href="%{url}">%{url}</a></p>
+          <p>From this moment you can enter to the URL and check the cameras and microphones.</p>.
