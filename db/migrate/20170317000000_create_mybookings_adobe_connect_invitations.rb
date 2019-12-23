@@ -1,4 +1,4 @@
-class CreateMybookingsAdobeConnectInvitations < ActiveRecord::Migration
+class CreateMybookingsAdobeConnectInvitations < ActiveRecord::Migration[4.2]
   def change
     create_table :mybookings_adobe_connect_invitations, id: false do |t|
       t.integer :booking_id

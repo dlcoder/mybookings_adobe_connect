@@ -1,4 +1,4 @@
-class CreateMybookingsAdobeConnectBaseSchema < ActiveRecord::Migration
+class CreateMybookingsAdobeConnectBaseSchema < ActiveRecord::Migration[4.2]
   def change
     add_column :mybookings_bookings, :adobe_connect_participants, :text
     add_column :mybookings_bookings, :adobe_connect_meeting_room_id, :integer

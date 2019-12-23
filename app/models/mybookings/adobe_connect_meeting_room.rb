@@ -1,5 +1,5 @@
 module Mybookings
-  class AdobeConnectMeetingRoom < ActiveRecord::Base
+  class AdobeConnectMeetingRoom < ApplicationRecord
     belongs_to :user, class_name: 'User'
 
     delegate :email, to: :user, prefix: true
