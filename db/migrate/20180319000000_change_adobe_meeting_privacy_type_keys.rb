@@ -1,4 +1,4 @@
-class ChangeAdobeMeetingPrivacyTypeKeys < ActiveRecord::Migration
+class ChangeAdobeMeetingPrivacyTypeKeys < ActiveRecord::Migration[4.2]
   def change
     ActiveRecord::Base.record_timestamps = false
     begin
