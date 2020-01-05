@@ -1,6 +1,6 @@
 module Mybookings
   class AdobeConnectEvent < Event
-    belongs_to :booking, class_name: 'AdobeConnectBooking', foreign_key: :booking_id, dependent: :destroy
+    belongs_to :booking, class_name: 'AdobeConnectBooking', foreign_key: :booking_id
 
     delegate :adobe_connect_participants,
       :adobe_connect_meeting_room_name,
